@@ -37,12 +37,33 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig}
 	DESTDIR=$RPM_BUILD_ROOT
 
 install cactid.conf $RPM_BUILD_ROOT%{_sysconfdir}
+install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/rc.d/init.d/cactid
+install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/cactid
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post
+/sbin/chkconfig --add cactid
+if [ -f /var/lock/subsys/cactid ]; then
+        /etc/rc.d/init.d/cactid restart 1>&2
+else
+        echo "Run \"/etc/rc.d/init.d/cactid start\" to start cactid daemon."
+fi
+
+%preun
+if [ "$1" = "0" ]; then
+        if [ -f /var/lock/subsys/cactid ]; then
+                /etc/rc.d/init.d/cactid stop 1>&2
+        fi
+        /sbin/chkconfig --del cactid
+fi
+
 
 %files
 %defattr(644,root,root,755)
 %doc CHANGELOG README
 %attr(755,root,root) %{_bindir}/*
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/cactid.conf
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/sysconfig/cactid
+%attr(754,root,root) /etc/rc.d/init.d/cactid
