@@ -33,7 +33,7 @@ case "$1" in
 	# Check if the service is already running?
 	if [ ! -f /var/lock/subsys/cactid ]; then
 		msg_starting cactid
-		daemon /usr/sbin/cactid
+		daemon /usr/bin/cactid
 		RETVAL=$?
 		[ $RETVAL -eq 0 ] && touch /var/lock/subsys/cactid
 	else
