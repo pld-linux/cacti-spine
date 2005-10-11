@@ -6,8 +6,6 @@ License:	GPL
 Group:		Applications
 Source0:	http://www.cacti.net/downloads/cactid/%{name}-%{version}.tar.gz
 # Source0-md5:	2b102f9029ffaa4fb0e186c6640b1851
-Source1:	%{name}.init
-Source2:	%{name}.sysconfig
 URL:		http://www.cacti.net/
 BuildRequires:	automake
 BuildRequires:	mysql-devel
@@ -33,39 +31,23 @@ install /usr/share/automake/config.* config
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_sysconfdir}/{rc.d/init.d,sysconfig}
+install -d $RPM_BUILD_ROOT%{_sysconfdir}/cron.d/
 
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
 install cactid.conf $RPM_BUILD_ROOT%{_sysconfdir}
-install %{SOURCE1} $RPM_BUILD_ROOT%{_sysconfdir}/rc.d/init.d/cactid
-install %{SOURCE2} $RPM_BUILD_ROOT%{_sysconfdir}/sysconfig/cactid
+
+cat  << EOF > $RPM_BUILD_ROOT%{_sysconfdir}/cron.d/%{name}
+*/5 * * * * nobody umask 022; /usr/bin/cactid > /dev/null 2>&1
+EOF
 
 %clean
 rm -rf $RPM_BUILD_ROOT
-
-%post
-/sbin/chkconfig --add cactid
-if [ -f /var/lock/subsys/cactid ]; then
-        /etc/rc.d/init.d/cactid restart 1>&2
-else
-        echo "Run \"/etc/rc.d/init.d/cactid start\" to start cactid daemon."
-fi
-
-%preun
-if [ "$1" = "0" ]; then
-        if [ -f /var/lock/subsys/cactid ]; then
-                /etc/rc.d/init.d/cactid stop 1>&2
-        fi
-        /sbin/chkconfig --del cactid
-fi
-
 
 %files
 %defattr(644,root,root,755)
 %doc CHANGELOG README
 %attr(755,root,root) %{_bindir}/*
 %attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/cactid.conf
-%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/sysconfig/cactid
-%attr(754,root,root) /etc/rc.d/init.d/cactid
+%attr(640,root,root) %config(noreplace) %verify(not md5 mtime size) /etc/cron.d/%{name}
