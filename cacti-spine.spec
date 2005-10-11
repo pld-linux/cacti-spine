@@ -9,6 +9,7 @@ Source0:	http://www.cacti.net/downloads/cactid/%{name}-%{version}.tar.gz
 Source1:	%{name}.init
 Source2:	%{name}.sysconfig
 URL:		http://www.cacti.net/
+BuildRequires:	automake
 BuildRequires:	mysql-devel
 BuildRequires:	net-snmp-devel
 BuildRequires:	openssl-devel
@@ -24,6 +25,7 @@ legacy cmd.php processor.
 %setup -q
 
 %build
+install /usr/share/automake/config.* config
 %configure \
 	--with-mysql \
 	--with-snmp=%{_prefix}
