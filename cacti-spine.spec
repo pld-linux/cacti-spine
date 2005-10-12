@@ -1,7 +1,7 @@
 Summary:	A backend data gatherer for cacti
 Name:		cacti-cactid
 Version:	0.8.6f
-Release:	0.2
+Release:	1
 License:	GPL
 Group:		Applications
 Source0:	http://www.cacti.net/downloads/cactid/%{name}-%{version}.tar.gz
