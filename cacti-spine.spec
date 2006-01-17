@@ -1,12 +1,12 @@
 Summary:	A backend data gatherer for cacti
 Summary(pl):	Backend gromadz±cy dane dla cacti
 Name:		cacti-cactid
-Version:	0.8.6f
-Release:	2
+Version:	0.8.6g
+Release:	1
 License:	GPL
 Group:		Applications
 Source0:	http://www.cacti.net/downloads/cactid/%{name}-%{version}.tar.gz
-# Source0-md5:	2b102f9029ffaa4fb0e186c6640b1851
+# Source0-md5:	8cd35272d86dc112ba1e82393d9f07c3
 URL:		http://www.cacti.net/
 BuildRequires:	automake
 BuildRequires:	mysql-devel
