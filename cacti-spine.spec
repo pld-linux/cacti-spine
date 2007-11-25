@@ -1,12 +1,12 @@
 Summary:	A backend data gatherer for cacti
 Summary(pl.UTF-8):	Backend gromadzący dane dla cacti
-Name:		cacti-cactid
-Version:	0.8.6i
+Name:		cacti-spine
+Version:	0.8.7
 Release:	1
 License:	GPL
 Group:		Applications
-Source0:	http://www.cacti.net/downloads/cactid/%{name}-%{version}.tar.gz
-# Source0-md5:	303c7533656c075cb695a1a8c54537b6
+Source0:	http://www.cacti.net/downloads/spine/%{name}-%{version}.tar.gz
+# Source0-md5:	7a92339f80622b607705c37aaae2d635
 URL:		http://www.cacti.net/
 BuildRequires:	automake
 BuildRequires:	mysql-devel
@@ -14,6 +14,8 @@ BuildRequires:	net-snmp-devel
 BuildRequires:	openssl-devel
 BuildRequires:	zlib-devel
 Requires:	cacti
+Provides:	cacti-cactid
+Obsoletes:	cacti-cactid
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -30,7 +32,9 @@ procesorem cmd.php.
 %setup -q
 
 %build
-install /usr/share/automake/config.* config
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
 %configure \
 	--with-mysql \
 	--with-snmp=%{_prefix}
@@ -43,7 +47,7 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-install cactid.conf $RPM_BUILD_ROOT%{_sysconfdir}
+install spine.conf $RPM_BUILD_ROOT%{_sysconfdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -52,4 +56,4 @@ rm -rf $RPM_BUILD_ROOT
 %defattr(644,root,root,755)
 %doc README
 %attr(755,root,root) %{_bindir}/*
-%attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/cactid.conf
+%attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/spine.conf
