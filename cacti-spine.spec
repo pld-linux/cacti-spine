@@ -8,7 +8,9 @@ Group:		Applications
 Source0:	http://www.cacti.net/downloads/spine/%{name}-%{version}.tar.gz
 # Source0-md5:	7a92339f80622b607705c37aaae2d635
 URL:		http://www.cacti.net/
+BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	libtool
 BuildRequires:	mysql-devel
 BuildRequires:	net-snmp-devel
 BuildRequires:	openssl-devel
