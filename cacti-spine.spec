@@ -2,7 +2,7 @@ Summary:	A backend data gatherer for cacti
 Summary(pl.UTF-8):	Backend gromadzący dane dla cacti
 Name:		cacti-spine
 Version:	0.8.7a
-Release:	1
+Release:	3
 License:	GPL
 Group:		Applications
 Source0:	http://www.cacti.net/downloads/spine/%{name}-%{version}.tar.gz
@@ -15,6 +15,7 @@ BuildRequires:	mysql-devel
 BuildRequires:	net-snmp-devel
 BuildRequires:	openssl-devel
 BuildRequires:	zlib-devel
+%requires_eq_to	net-snmp-libs
 Requires:	cacti
 Provides:	cacti-cactid
 Obsoletes:	cacti-cactid
