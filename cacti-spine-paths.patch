@@ -1,0 +1,56 @@
+--- cacti-spine-0.8.7a/spine.h~	2007-11-26 05:40:21.000000000 +0200
++++ cacti-spine-0.8.7a/spine.h	2008-10-05 05:33:49.545548298 +0300
+@@ -136,20 +136,18 @@
+ #define MAX_SIMULTANEOUS_SCRIPTS 20
+ 
+ /* locations to search for the config file */
+-#define CONFIG_PATHS 3
+-#define CONFIG_PATH_1 ""
+-#define CONFIG_PATH_2 "/etc/"
+-#define CONFIG_PATH_3 "../etc/"
++#define CONFIG_PATHS 1
++#define CONFIG_PATH_1 "/etc/webapps/cacti/"
+ 
+ /* config file defaults */
+ #define DEFAULT_CONF_FILE "spine.conf"
+ #define DEFAULT_THREADS 5
+ #define DEFAULT_DB_HOST "localhost"
+ #define DEFAULT_DB_DB "cacti"
+-#define DEFAULT_DB_USER "cactiuser"
+-#define DEFAULT_DB_PASS "cactiuser"
++#define DEFAULT_DB_USER "mysql"
++#define DEFAULT_DB_PASS ""
+ #define DEFAULT_DB_PORT 3306
+-#define DEFAULT_LOGFILE "/var/www/html/cacti/log/cacti.log"
++#define DEFAULT_LOGFILE "/var/log/cacti/cacti.log"
+ #define DEFAULT_TIMEOUT 294000000
+ 
+ /* threads constants */
+--- cacti-spine-0.8.7a/util.c~	2007-11-26 05:40:21.000000000 +0200
++++ cacti-spine-0.8.7a/util.c	2008-10-05 05:35:03.349764684 +0300
+@@ -462,8 +462,6 @@
+ 	STRNCOPY(set.dbpass, DEFAULT_DB_PASS);
+ 
+ 	STRNCOPY(config_paths[0], CONFIG_PATH_1);
+-	STRNCOPY(config_paths[1], CONFIG_PATH_2);
+-	STRNCOPY(config_paths[2], CONFIG_PATH_3);
+ 
+ 	set.log_destination = LOGDEST_FILE;
+ }
+--- cacti-spine-0.8.7a/spine.conf~	2007-11-26 05:40:21.000000000 +0200
++++ cacti-spine-0.8.7a/spine.conf	2008-10-05 05:41:07.495832134 +0300
+@@ -28,8 +28,8 @@
+ # | DB_User      The user to access the database, typically 'cactiuser'     |
+ # | DB_Pass      The password for the Cacti user                            |
+ # +-------------------------------------------------------------------------+
+-DB_Host         localhost
+-DB_Database     cacti
+-DB_User         cactiuser
+-DB_Pass         cactiuser
+-DB_Port         3306
+\ No newline at end of file
++#DB_Host         localhost
++#DB_Database     cacti
++#DB_User         mysql
++#DB_Pass         
++#DB_Port         3306
