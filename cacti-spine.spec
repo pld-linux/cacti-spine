@@ -17,8 +17,6 @@ BuildRequires:	openssl-devel
 BuildRequires:	zlib-devel
 %requires_eq_to	net-snmp-libs
 Requires:	cacti
-Provides:	cacti-cactid
-Obsoletes:	cacti-cactid
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
