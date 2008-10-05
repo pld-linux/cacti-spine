@@ -2,11 +2,12 @@ Summary:	A backend data gatherer for cacti
 Summary(pl.UTF-8):	Backend gromadzący dane dla cacti
 Name:		cacti-spine
 Version:	0.8.7a
-Release:	3
+Release:	4
 License:	GPL
 Group:		Applications
 Source0:	http://www.cacti.net/downloads/spine/%{name}-%{version}.tar.gz
 # Source0-md5:	85a32d256c056a3a4adb8bf3dff5e2dc
+Patch0:		%{name}-paths.patch
 URL:		http://www.cacti.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -18,6 +19,11 @@ BuildRequires:	zlib-devel
 %requires_eq_to	net-snmp-libs
 Requires:	cacti
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_webapps	/etc/webapps
+%define		_webapp		cacti
+%define		_sysconfdir	%{_webapps}/%{_webapp}
+%define		_bindir		%{_sbindir}
 
 %description
 A backend data gatherer for cacti. This package represents the future
@@ -31,6 +37,7 @@ procesorem cmd.php.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__libtoolize}
@@ -49,6 +56,7 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}
 	DESTDIR=$RPM_BUILD_ROOT
 
 install spine.conf $RPM_BUILD_ROOT%{_sysconfdir}
+mv $RPM_BUILD_ROOT%{_sbindir}/{spine,cacti-poller-spine}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -56,5 +64,5 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README
-%attr(755,root,root) %{_bindir}/*
+%attr(755,root,root) %{_sbindir}/cacti-poller-spine
 %attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/spine.conf
