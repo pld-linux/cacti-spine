@@ -37,8 +37,8 @@
  
  	set.log_destination = LOGDEST_FILE;
  }
---- cacti-spine-0.8.7a/spine.conf~	2007-11-26 05:40:21.000000000 +0200
-+++ cacti-spine-0.8.7a/spine.conf	2008-10-05 05:41:07.495832134 +0300
+--- cacti-spine-0.8.7a/spine.conf.dist~	2007-11-26 05:40:21.000000000 +0200
++++ cacti-spine-0.8.7a/spine.conf.dist	2008-10-05 05:41:07.495832134 +0300
 @@ -28,8 +28,8 @@
  # | DB_User      The user to access the database, typically 'cactiuser'     |
  # | DB_Pass      The password for the Cacti user                            |
