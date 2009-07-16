@@ -1,12 +1,12 @@
 Summary:	A backend data gatherer for cacti
 Summary(pl.UTF-8):	Backend gromadzący dane dla cacti
 Name:		cacti-spine
-Version:	0.8.7c
+Version:	0.8.7e
 Release:	1
 License:	GPL
 Group:		Applications
 Source0:	http://www.cacti.net/downloads/spine/%{name}-%{version}.tar.gz
-# Source0-md5:	8e924e83735d411c2798cc646d67d21e
+# Source0-md5:	99e5bde07fc31d1ed8aa23c59de00417
 Patch0:		%{name}-paths.patch
 URL:		http://www.cacti.net/
 BuildRequires:	autoconf
@@ -58,7 +58,6 @@ install -d $RPM_BUILD_ROOT%{_sysconfdir}
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT
 
-mv spine.conf.dist spine.conf
 install spine.conf $RPM_BUILD_ROOT%{_sysconfdir}
 mv $RPM_BUILD_ROOT%{_sbindir}/{spine,cacti-poller-spine}
 
