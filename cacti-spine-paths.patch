@@ -1,7 +1,7 @@
---- cacti-spine-0.8.7a/spine.h~	2007-11-26 05:40:21.000000000 +0200
-+++ cacti-spine-0.8.7a/spine.h	2008-10-05 05:33:49.545548298 +0300
-@@ -136,21 +136,18 @@
- #define MAX_SIMULTANEOUS_SCRIPTS 20
+--- cacti-spine-0.8.7g/spine.h~	2010-07-12 12:40:01.000000000 +0300
++++ cacti-spine-0.8.7g/spine.h	2010-07-12 12:40:39.663780727 +0300
+@@ -135,22 +135,19 @@
+ #define SPINE_FORK 0
  
  /* locations to search for the config file */
 -#define CONFIG_PATHS 4
@@ -22,6 +22,7 @@
 +#define DEFAULT_DB_USER "mysql"
 +#define DEFAULT_DB_PASS ""
  #define DEFAULT_DB_PORT 3306
+ #define DEFAULT_DB_PREG 0
 -#define DEFAULT_LOGFILE "/var/www/html/cacti/log/cacti.log"
 +#define DEFAULT_LOGFILE "/var/log/cacti/cacti.log"
  #define DEFAULT_TIMEOUT 294000000
@@ -39,20 +40,21 @@
 
  	set.log_destination = LOGDEST_FILE;
  }
---- cacti-spine-0.8.7a/spine.conf~	2007-11-26 05:40:21.000000000 +0200
-+++ cacti-spine-0.8.7a/spine.conf	2008-10-05 05:41:07.495832134 +0300
-@@ -28,8 +28,8 @@
- # | DB_User      The user to access the database, typically 'cactiuser'     |
- # | DB_Pass      The password for the Cacti user                            |
+--- cacti-spine-0.8.7g/spine.conf.dist~	2010-07-12 12:41:17.000000000 +0300
++++ cacti-spine-0.8.7g/spine.conf.dist	2010-07-12 12:41:55.223780961 +0300
+@@ -32,9 +32,9 @@
+ # | DB_PreG         Set to 1 if you wish to work with older versions of     |
+ # |                 cacti 0.8.7.                                            |
  # +-------------------------------------------------------------------------+
 -DB_Host         localhost
 -DB_Database     cacti
 -DB_User         cactiuser
 -DB_Pass         cactiuser
 -DB_Port         3306
-\ No newline at end of file
+-DB_PreG         0
 +#DB_Host         localhost
 +#DB_Database     cacti
-+#DB_User         mysql
-+#DB_Pass         
++#DB_User         cactiuser
++#DB_Pass         cactiuser
 +#DB_Port         3306
++#DB_PreG         0
