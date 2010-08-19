@@ -1,8 +1,8 @@
-Summary:	A backend data gatherer for cacti
-Summary(pl.UTF-8):	Backend gromadzący dane dla cacti
+Summary:	A backend data gatherer for Cacti
+Summary(pl.UTF-8):	Backend gromadzący dane dla Cacti
 Name:		cacti-spine
 Version:	0.8.7g
-Release:	2
+Release:	3
 License:	GPL
 Group:		Applications
 Source0:	http://www.cacti.net/downloads/spine/%{name}-%{version}.tar.gz
@@ -19,6 +19,7 @@ BuildRequires:	rpmbuild(macros) >= 1.502
 BuildRequires:	zlib-devel
 %requires_eq	net-snmp-libs
 Requires:	cacti
+Obsoletes:	cacti-cactid
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_webapps	/etc/webapps
@@ -27,13 +28,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_bindir		%{_sbindir}
 
 %description
-A backend data gatherer for cacti. This package represents the future
-replacement for cacti's cmd.php. It is almost 100% compatible with the
+A backend data gatherer for Cacti. This package represents the future
+replacement for Cacti's cmd.php. It is almost 100% compatible with the
 legacy cmd.php processor.
 
 %description -l pl.UTF-8
-Backend gromadzący dane dla cacti. Ten pakiet reprezentuje przyszły
-zamiennik cmd.php z cacti. Jest prawie w 100% kompatybilny ze starym
+Backend gromadzący dane dla Cacti. Ten pakiet reprezentuje przyszły
+zamiennik cmd.php z Cacti. Jest prawie w 100% kompatybilny ze starym
 procesorem cmd.php.
 
 %prep
