@@ -1,16 +1,18 @@
-Summary:	A backend data gatherer for cacti
-Summary(pl.UTF-8):	Backend gromadzący dane dla cacti
+Summary:	A backend data gatherer for Cacti
+Summary(pl.UTF-8):	Backend gromadzący dane dla Cacti
 Name:		cacti-spine
-Version:	0.8.7g
+Version:	0.8.7i
 Release:	1
 License:	GPL
 Group:		Applications
 Source0:	http://www.cacti.net/downloads/spine/%{name}-%{version}.tar.gz
-# Source0-md5:	22c2b1986c880b9c587876c18d5c3f9f
+# Source0-md5:	70df47f1743194f62e0e00a8dc020dd7
 Patch0:		%{name}-paths.patch
+# Official patches http://www.cacti.net/spine_download_patches.php
 URL:		http://www.cacti.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	libcap-devel
 BuildRequires:	libtool
 BuildRequires:	mysql-devel
 BuildRequires:	net-snmp-devel
@@ -19,6 +21,7 @@ BuildRequires:	rpmbuild(macros) >= 1.502
 BuildRequires:	zlib-devel
 %requires_eq	net-snmp-libs
 Requires:	cacti
+Obsoletes:	cacti-cactid
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_webapps	/etc/webapps
@@ -27,13 +30,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_bindir		%{_sbindir}
 
 %description
-A backend data gatherer for cacti. This package represents the future
-replacement for cacti's cmd.php. It is almost 100% compatible with the
+A backend data gatherer for Cacti. This package represents the future
+replacement for Cacti's cmd.php. It is almost 100% compatible with the
 legacy cmd.php processor.
 
 %description -l pl.UTF-8
-Backend gromadzący dane dla cacti. Ten pakiet reprezentuje przyszły
-zamiennik cmd.php z cacti. Jest prawie w 100% kompatybilny ze starym
+Backend gromadzący dane dla Cacti. Ten pakiet reprezentuje przyszły
+zamiennik cmd.php z Cacti. Jest prawie w 100% kompatybilny ze starym
 procesorem cmd.php.
 
 %prep
@@ -49,6 +52,7 @@ chmod +x ./configure
 %configure \
 	--with-results-buffer=4096 \
 	--with-mysql \
+	--enable-lcap \
 	--with-snmp=%{_prefix}
 %{__make}
 
