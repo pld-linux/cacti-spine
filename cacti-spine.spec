@@ -3,6 +3,9 @@
 #spine.o: In function `drop_root':
 #/home/users/glen/rpm/packages/BUILD.x86_64-linux/cacti-spine-0.8.8f/spine.c:133: undefined reference to `cap_from_text'
 # - http://bugs.cacti.net/view.php?id=2650
+#
+# Conditional build:
+%bcond_without	cap		# Enable support for the Linux Capabilities (default: disabled)
 
 Summary:	A backend data gatherer for Cacti
 Summary(pl.UTF-8):	Backend gromadzący dane dla Cacti
@@ -19,7 +22,7 @@ Patch1:		x32.patch
 URL:		http://www.cacti.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	libcap-devel
+%{?with_cap:BuildRequires:	libcap-devel}
 BuildRequires:	libtool
 BuildRequires:	mysql-devel
 BuildRequires:	net-snmp-devel
@@ -62,7 +65,7 @@ chmod +x ./configure
 %configure \
 	--with-results-buffer=4096 \
 	--with-mysql \
-	--enable-lcap \
+	%{__enable_disable cap lcap} \
 	--with-snmp=%{_prefix}
 %{__make}
 
