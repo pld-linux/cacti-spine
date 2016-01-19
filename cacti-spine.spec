@@ -58,7 +58,7 @@ procesorem cmd.php.
 
 %build
 %{__libtoolize}
-%{__aclocal}
+%{__aclocal} -I m4
 %{__automake}
 %{__autoconf}
 chmod +x ./configure
