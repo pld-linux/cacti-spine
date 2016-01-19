@@ -1,8 +1,13 @@
+# TODO
+# - -lcap link fail:
+#spine.o: In function `drop_root':
+#/home/users/glen/rpm/packages/BUILD.x86_64-linux/cacti-spine-0.8.8f/spine.c:133: undefined reference to `cap_from_text'
+
 Summary:	A backend data gatherer for Cacti
 Summary(pl.UTF-8):	Backend gromadzący dane dla Cacti
 Name:		cacti-spine
 Version:	0.8.8f
-Release:	1
+Release:	0.1
 License:	GPL
 Group:		Daemons
 Source0:	http://www.cacti.net/downloads/spine/%{name}-%{version}.tar.gz
