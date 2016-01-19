@@ -40,21 +40,19 @@
 
  	set.log_destination = LOGDEST_FILE;
  }
---- cacti-spine-0.8.7g/spine.conf.dist~	2010-07-12 12:41:17.000000000 +0300
-+++ cacti-spine-0.8.7g/spine.conf.dist	2010-07-12 12:41:55.223780961 +0300
-@@ -32,9 +32,9 @@
- # | DB_PreG         Set to 1 if you wish to work with older versions of     |
- # |                 cacti 0.8.7.                                            |
+--- cacti-spine-0.8.8f/spine.conf.dist~	2015-07-20 04:59:09.000000000 +0300
++++ cacti-spine-0.8.8f/spine.conf.dist	2016-01-19 11:37:46.898998318 +0200
+@@ -30,8 +30,8 @@
+ # | SNMP_Clientaddr Bind SNMP to a specific address for sites that use      |
+ # |                 higher security levels                                  |
  # +-------------------------------------------------------------------------+
 -DB_Host         localhost
 -DB_Database     cacti
 -DB_User         cactiuser
 -DB_Pass         cactiuser
 -DB_Port         3306
--DB_PreG         0
 +#DB_Host         localhost
 +#DB_Database     cacti
 +#DB_User         cactiuser
 +#DB_Pass         cactiuser
 +#DB_Port         3306
-+#DB_PreG         0
