@@ -1,0 +1,12 @@
+http://bugs.cacti.net/view.php?id=2663
+
+--- cacti-spine-0.8.8g/Makefile.am~	2016-02-22 03:49:22.000000000 +0200
++++ cacti-spine-0.8.8g/Makefile.am	2016-02-25 23:12:58.718455284 +0200
+@@ -9,5 +9,5 @@
+ 
+ man_MANS = spine.1
+ 
+-spine.1: spine.c 
+-	$(HELP2MAN) --output=$@ --name='Data Collector for Cacti' --no-info --version-option='--version' ./spine
++spine.1: ./spine
++	$(HELP2MAN) --output=$@ --name='Data Collector for Cacti' --no-info --version-option='--version' $<
