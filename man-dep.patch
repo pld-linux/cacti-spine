@@ -8,5 +8,5 @@ http://bugs.cacti.net/view.php?id=2663
  
 -spine.1: spine.c 
 -	$(HELP2MAN) --output=$@ --name='Data Collector for Cacti' --no-info --version-option='--version' ./spine
-+spine.1: ./spine
-+	$(HELP2MAN) --output=$@ --name='Data Collector for Cacti' --no-info --version-option='--version' $<
++spine.1: spine
++	$(HELP2MAN) --output=$@ --name='Data Collector for Cacti' --no-info --version-option='--version' ./$<
