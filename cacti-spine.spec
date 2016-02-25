@@ -17,7 +17,6 @@ Group:		Daemons
 Source0:	http://www.cacti.net/downloads/spine/%{name}-%{version}.tar.gz
 # Source0-md5:	9e90936b950a7a353b31bf16ff7798f4
 Patch0:		%{name}-paths.patch
-Patch1:		x32.patch
 Patch2:		man-dep.patch
 # Official patches http://www.cacti.net/spine_download_patches.php
 URL:		http://www.cacti.net/
@@ -53,9 +52,6 @@ procesorem cmd.php.
 %prep
 %setup -q
 %patch0 -p1
-%ifarch x32
-%patch1 -p1
-%endif
 %patch2 -p1
 
 %build
