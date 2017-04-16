@@ -42,17 +42,28 @@
  }
 --- cacti-spine-0.8.8f/spine.conf.dist~	2015-07-20 04:59:09.000000000 +0300
 +++ cacti-spine-0.8.8f/spine.conf.dist	2016-01-19 11:37:46.898998318 +0200
-@@ -30,8 +30,8 @@
- # | SNMP_Clientaddr Bind SNMP to a specific address for sites that use      |
- # |                 higher security levels                                  |
+@@ -30,14 +30,14 @@
+ # | RDB_Pass        The remote database password.                           |
  # +-------------------------------------------------------------------------+
--DB_Host         localhost
--DB_Database     cacti
--DB_User         cactiuser
--DB_Pass         cactiuser
--DB_Port         3306
-+#DB_Host         localhost
-+#DB_Database     cacti
-+#DB_User         cactiuser
-+#DB_Pass         cactiuser
-+#DB_Port         3306
+ 
+-DB_Host			localhost
+-DB_Database		cacti
+-DB_User			cactiuser
+-DB_Pass			cactiuser
+-DB_Port			3306
++#DB_Host			localhost
++#DB_Database		cacti
++#DB_User			cactiuser
++#DB_Pass			cactiuser
++#DB_Port			3306
+ 
+-RDB_Host		localhost
+-RDB_Database		cacti
+-RDB_User		cactiuser
+-RDB_Pass		cactiuser
+-RDB_Port		3306
++#RDB_Host		localhost
++#RDB_Database		cacti
++#RDB_User		cactiuser
++#RDB_Pass		cactiuser
++#RDB_Port		3306

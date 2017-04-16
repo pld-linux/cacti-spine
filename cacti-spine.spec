@@ -1,8 +1,3 @@
-# TODO
-# - -lcap link fail:
-#spine.o: In function `drop_root':
-#/home/users/glen/rpm/packages/BUILD.x86_64-linux/cacti-spine-0.8.8f/spine.c:133: undefined reference to `cap_from_text'
-# - http://bugs.cacti.net/view.php?id=2650
 #
 # Conditional build:
 %bcond_without	cap		# Enable support for the Linux Capabilities (default: disabled)
@@ -10,14 +5,13 @@
 Summary:	A backend data gatherer for Cacti
 Summary(pl.UTF-8):	Backend gromadzący dane dla Cacti
 Name:		cacti-spine
-Version:	0.8.8g
-Release:	0.1
+Version:	1.1.3
+Release:	1
 License:	GPL
 Group:		Daemons
 Source0:	http://www.cacti.net/downloads/spine/%{name}-%{version}.tar.gz
-# Source0-md5:	9e90936b950a7a353b31bf16ff7798f4
+# Source0-md5:	0a21b836cc0a1bed438bdad3635f975f
 Patch0:		%{name}-paths.patch
-Patch2:		man-dep.patch
 # Official patches http://www.cacti.net/spine_download_patches.php
 URL:		http://www.cacti.net/
 BuildRequires:	autoconf
@@ -52,7 +46,6 @@ procesorem cmd.php.
 %prep
 %setup -q
 %patch0 -p1
-%patch2 -p1
 
 %build
 %{__libtoolize}
@@ -80,6 +73,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README
+%doc README.md
 %attr(640,root,http) %config(noreplace) %verify(not md5 mtime size) %{_sysconfdir}/spine.conf
 %attr(755,root,root) %{_sbindir}/cacti-poller-spine
+%{_mandir}/man1/spine.1*
