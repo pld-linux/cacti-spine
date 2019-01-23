@@ -40,30 +40,38 @@
 
  	set.log_destination = LOGDEST_FILE;
  }
---- cacti-spine-0.8.8f/spine.conf.dist~	2015-07-20 04:59:09.000000000 +0300
-+++ cacti-spine-0.8.8f/spine.conf.dist	2016-01-19 11:37:46.898998318 +0200
-@@ -30,14 +30,14 @@
+--- cacti-spine-1.2.1/spine.conf.dist~	2019-01-20 17:23:29.000000000 +0100
++++ cacti-spine-1.2.1/spine.conf.dist	2019-01-23 14:01:06.618334417 +0100
+@@ -39,21 +39,21 @@
  # | RDB_Pass        The remote database password.                           |
  # +-------------------------------------------------------------------------+
  
--DB_Host			localhost
--DB_Database		cacti
--DB_User			cactiuser
--DB_Pass			cactiuser
--DB_Port			3306
-+#DB_Host			localhost
-+#DB_Database		cacti
-+#DB_User			cactiuser
-+#DB_Pass			cactiuser
-+#DB_Port			3306
+-DB_Host       localhost
+-DB_Database   cacti
+-DB_User       cactiuser
+-DB_Pass       cactiuser
+-DB_Port       3306
++#DB_Host       localhost
++#DB_Database   cacti
++#DB_User       cactiuser
++#DB_Pass       cactiuser
++#DB_Port       3306
+ #DB_UseSSL    0
+ #RDB_SSL_Key   
+ #RDB_SSL_Cert
+ #RDB_SSL_CA
  
--RDB_Host		localhost
--RDB_Database		cacti
--RDB_User		cactiuser
--RDB_Pass		cactiuser
--RDB_Port		3306
-+#RDB_Host		localhost
-+#RDB_Database		cacti
-+#RDB_User		cactiuser
-+#RDB_Pass		cactiuser
-+#RDB_Port		3306
+-RDB_Host      localhost
+-RDB_Database  cacti
+-RDB_User      cactiuser
+-RDB_Pass      cactiuser
+-RDB_Port      3306
++#RDB_Host      localhost
++#RDB_Database  cacti
++#RDB_User      cactiuser
++#RDB_Pass      cactiuser
++#RDB_Port      3306
+ #RDB_UseSSL    0
+ #RDB_SSL_Key   
+ #RDB_SSL_Cert
+
