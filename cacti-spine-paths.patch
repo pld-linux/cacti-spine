@@ -1,6 +1,27 @@
---- cacti-spine-0.8.7g/spine.h~	2010-07-12 12:40:01.000000000 +0300
-+++ cacti-spine-0.8.7g/spine.h	2010-07-12 12:40:39.663780727 +0300
-@@ -135,22 +135,19 @@
+diff -urNp -x '*.orig' cacti-spine-1.2.16.org/spine.conf.dist cacti-spine-1.2.16/spine.conf.dist
+--- cacti-spine-1.2.16.org/spine.conf.dist	2020-11-30 19:21:59.000000000 +0100
++++ cacti-spine-1.2.16/spine.conf.dist	2022-02-09 22:10:49.918624593 +0100
+@@ -40,11 +40,11 @@
+ # | RDB_Pass        The remote database password.                           |
+ # +-------------------------------------------------------------------------+
+ 
+-DB_Host       localhost
+-DB_Database   cacti
+-DB_User       cactiuser
+-DB_Pass       cactiuser
+-DB_Port       3306
++#DB_Host       localhost
++#DB_Database   cacti
++#DB_User       cactiuser
++#DB_Pass       cactiuser
++#DB_Port       3306
+ #DB_UseSSL    0
+ #DB_SSL_Key
+ #DB_SSL_Cert
+diff -urNp -x '*.orig' cacti-spine-1.2.16.org/spine.h cacti-spine-1.2.16/spine.h
+--- cacti-spine-1.2.16.org/spine.h	2020-11-30 19:21:59.000000000 +0100
++++ cacti-spine-1.2.16/spine.h	2022-02-09 22:10:49.918624593 +0100
+@@ -148,22 +148,19 @@
  #define SPINE_FORK 0
  
  /* locations to search for the config file */
@@ -28,35 +49,16 @@
  #define DEFAULT_TIMEOUT 294000000
  
  /* threads constants */
---- cacti-spine-0.8.7a/util.c~	2007-11-26 05:40:21.000000000 +0200
-+++ cacti-spine-0.8.7a/util.c	2008-10-05 05:35:03.349764684 +0300
-@@ -462,9 +462,6 @@
- 	STRNCOPY(set.dbpass, DEFAULT_DB_PASS);
+diff -urNp -x '*.orig' cacti-spine-1.2.16.org/util.c cacti-spine-1.2.16/util.c
+--- cacti-spine-1.2.16.org/util.c	2020-11-30 19:21:59.000000000 +0100
++++ cacti-spine-1.2.16/util.c	2022-02-09 22:10:49.918624593 +0100
+@@ -957,9 +957,6 @@ void config_defaults() {
+ 	STRNCOPY(set.rdb_pass, DEFAULT_DB_PASS);
  
  	STRNCOPY(config_paths[0], CONFIG_PATH_1);
 -	STRNCOPY(config_paths[1], CONFIG_PATH_2);
 -	STRNCOPY(config_paths[2], CONFIG_PATH_3);
 -	STRNCOPY(config_paths[3], CONFIG_PATH_4);
-
+ 
  	set.log_destination = LOGDEST_FILE;
  }
-
---- cacti-spine-1.2.11/spine.conf.dist~	2020-04-06 04:15:20.000000000 +0200
-+++ cacti-spine-1.2.11/spine.conf.dist	2020-05-01 01:25:35.719541661 +0200
-@@ -40,11 +40,11 @@
- # | RDB_Pass        The remote database password.                           |
- # +-------------------------------------------------------------------------+
- 
--DB_Host       localhost
--DB_Database   cacti
--DB_User       cactiuser
--DB_Pass       cactiuser
--DB_Port       3306
-+#DB_Host       localhost
-+#DB_Database   cacti
-+#DB_User       cactiuser
-+#DB_Pass       cactiuser
-+#DB_Port       3306
- #DB_UseSSL    0
- #DB_SSL_Key
- #DB_SSL_Cert
