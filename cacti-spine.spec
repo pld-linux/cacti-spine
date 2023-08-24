@@ -1,21 +1,22 @@
 #
 # Conditional build:
-%bcond_without	cap		# Enable support for the Linux Capabilities (default: disabled)
+%bcond_without	cap	# Linux Capabilities support
 
 Summary:	A backend data gatherer for Cacti
 Summary(pl.UTF-8):	Backend gromadzący dane dla Cacti
 Name:		cacti-spine
-Version:	1.2.16
-Release:	3
+Version:	1.2.24
+Release:	1
 License:	GPL
 Group:		Daemons
-Source0:	http://www.cacti.net/downloads/spine/%{name}-%{version}.tar.gz
-# Source0-md5:	69133383948005f77ca82e10a8c6d228
+Source0:	https://files.cacti.net/spine/%{name}-%{version}.tar.gz
+# Source0-md5:	897800970b335fdedc722ade37316cf3
 Patch0:		%{name}-paths.patch
 # Official patches http://www.cacti.net/spine_download_patches.php
 URL:		http://www.cacti.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	help2man
 %{?with_cap:BuildRequires:	libcap-devel}
 BuildRequires:	libtool
 BuildRequires:	mysql-devel
@@ -25,7 +26,7 @@ BuildRequires:	rpmbuild(macros) >= 1.502
 BuildRequires:	zlib-devel
 %requires_eq	net-snmp-libs
 Requires:	cacti
-Obsoletes:	cacti-cactid
+Obsoletes:	cacti-cactid < 0.8.7
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_webapps	/etc/webapps
