@@ -5,16 +5,15 @@
 Summary:	A backend data gatherer for Cacti
 Summary(pl.UTF-8):	Backend gromadzący dane dla Cacti
 Name:		cacti-spine
-Version:	1.2.30
-Release:	2
+Version:	1.2.31
+Release:	1
 License:	GPL
 Group:		Daemons
 Source0:	https://files.cacti.net/spine/%{name}-%{version}.tar.gz
-# Source0-md5:	249ca44c5a7863a2b5fcd382c8a77055
+# Source0-md5:	3f4c3e3a570301c2c158a970968eb60b
 Patch0:		%{name}-paths.patch
-Patch1:		no-backtrace.patch
 # Official patches http://www.cacti.net/spine_download_patches.php
-URL:		http://www.cacti.net/
+URL:		https://www.cacti.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	help2man
@@ -48,7 +47,6 @@ procesorem cmd.php.
 %prep
 %setup -q
 %patch -P0 -p1
-%patch -P1 -p1
 
 %build
 %{__libtoolize}
